@@ -12,6 +12,8 @@
 		6221CFFB1F011C36002FF7A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6221CFF91F011C36002FF7A7 /* Main.storyboard */; };
 		6221CFFD1F011C36002FF7A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6221CFFC1F011C36002FF7A7 /* Assets.xcassets */; };
 		6221D0001F011C36002FF7A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6221CFFE1F011C36002FF7A7 /* LaunchScreen.storyboard */; };
+		6221D0081F01D1A7002FF7A7 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6221D0071F01D1A7002FF7A7 /* level1.txt */; };
+		6221D00A1F01E093002FF7A7 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6221D0091F01E093002FF7A7 /* level2.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		6221CFFC1F011C36002FF7A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6221CFFF1F011C36002FF7A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6221D0011F011C36002FF7A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6221D0071F01D1A7002FF7A7 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		6221D0091F01E093002FF7A7 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				6221CFF71F011C36002FF7A7 /* ViewController.swift */,
 				6221CFF91F011C36002FF7A7 /* Main.storyboard */,
 				6221CFFC1F011C36002FF7A7 /* Assets.xcassets */,
+				6221D0071F01D1A7002FF7A7 /* level1.txt */,
+				6221D0091F01E093002FF7A7 /* level2.txt */,
 				6221CFFE1F011C36002FF7A7 /* LaunchScreen.storyboard */,
 				6221D0011F011C36002FF7A7 /* Info.plist */,
 			);
@@ -124,7 +130,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6221D00A1F01E093002FF7A7 /* level2.txt in Resources */,
 				6221D0001F011C36002FF7A7 /* LaunchScreen.storyboard in Resources */,
+				6221D0081F01D1A7002FF7A7 /* level1.txt in Resources */,
 				6221CFFD1F011C36002FF7A7 /* Assets.xcassets in Resources */,
 				6221CFFB1F011C36002FF7A7 /* Main.storyboard in Resources */,
 			);
