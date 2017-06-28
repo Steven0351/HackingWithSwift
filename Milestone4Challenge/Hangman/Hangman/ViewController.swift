@@ -20,21 +20,22 @@ class ViewController: UIViewController {
     var letterButton = [UIButton]()
     var hiddenButton = [UIButton]()
     var answer: String!
+    var level = -1
     
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
-            loadLevel()
         }
     }
     
     var remainingAttempts: Int = 7 {
         didSet {
             if remainingAttempts == 0 {
+                loadLevel()
                 gameAlert(title: "You lose", message: "Try a litle harder next time")
                 score -= 1
             }
-            answerLabel.text = "Remaining Attemps: \(remainingAttempts)"
+            attemptsLabel.text = "Remaining Attempts: \(remainingAttempts)"
         }
     }
     
@@ -73,12 +74,14 @@ class ViewController: UIViewController {
     }
     
     func loadLevel() {
-        answer = wordBank[score].uppercased()
-        var questionMarks = ""
-        for _ in answer.characters {
-            questionMarks = questionMarks + "?"
-        }
+        level += 1
+        answer = wordBank[level].uppercased()
+        let questionMarks = String(repeating: "?", count: answer.characters.count)
         answerLabel.text = questionMarks
+        for button in hiddenButton {
+            button.isHidden = false
+        }
+        hiddenButton.removeAll()
         print(answer)
     }
     
@@ -89,18 +92,26 @@ class ViewController: UIViewController {
     }
     
     func buttonTapped(button: UIButton) {
-        if answer.contains(button.titleLabel!.text!){
-            for (index, letter) in answer.characters.enumerated() {
-                print(index)
-                if button.titleLabel!.text! == String(letter) {
-                    
-                }
-            }
-        } else {
-            print("Nayyy")
-        }
         hiddenButton.append(button)
         button.isHidden = true
+        
+        if answer.contains(button.titleLabel!.text!){
+            var characters = Array(answerLabel.text!.characters)
+            for (index, letter) in answer.characters.enumerated() {
+                if button.titleLabel!.text! == String(letter) {
+                    characters[index] = letter
+                }
+            }
+            answerLabel.text = String(characters)
+        } else {
+            remainingAttempts -= 1
+        }
+        
+        if answerLabel.text! == answer {
+            score += 1
+            loadLevel()
+            gameAlert(title: "You win!", message: "Keep it going!")
+        }
     }
 
 }
