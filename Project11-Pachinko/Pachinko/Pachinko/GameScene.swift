@@ -11,6 +11,14 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    let ballDictionary: [Int:SKSpriteNode] = [1: SKSpriteNode(imageNamed: "ballBlue"),
+                                              2: SKSpriteNode(imageNamed: "ballCyan"),
+                                              3: SKSpriteNode(imageNamed: "ballGreen"),
+                                              4: SKSpriteNode(imageNamed: "ballGrey"),
+                                              5: SKSpriteNode(imageNamed: "ballPurple"),
+                                              6: SKSpriteNode(imageNamed: "ballRed"),
+                                              7: SKSpriteNode(imageNamed: "ballYellow")]
+    
     var scoreLabel: SKLabelNode!
     
     var score: Int = 0 {
@@ -37,14 +45,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ballsLabel.text = "Balls remaining: \(balls)"
         }
     }
-    
-    let ballDictionary: [Int:SKSpriteNode] = [1: SKSpriteNode(imageNamed: "ballBlue"),
-                                              2: SKSpriteNode(imageNamed: "ballCyan"),
-                                              3: SKSpriteNode(imageNamed: "ballGren"),
-                                              4: SKSpriteNode(imageNamed: "ballGrey"),
-                                              5: SKSpriteNode(imageNamed: "ballPurple"),
-                                              6: SKSpriteNode(imageNamed: "ballRed"),
-                                              7: SKSpriteNode(imageNamed: "ballYello")]
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
@@ -94,6 +94,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 editingMode = !editingMode
             } else {
                 if editingMode {
+                    for object in objects {
+                        if object.name == "box" {
+                            object.removeFromParent()
+                            return
+                        }
+                    }
                     let size = CGSize(width: GKRandomDistribution(lowestValue: 16, highestValue: 128).nextInt(),
                                       height: 16)
                     let box = SKSpriteNode(color: RandomColor(), size: size)
@@ -103,7 +109,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     box.physicsBody!.isDynamic = false
                     box.name = "box"
                     addChild(box)
-                    
                 } else {
                     if balls > 0 {
                         let ballNumber = GKRandomDistribution(lowestValue: 1, highestValue: 7).nextInt()
@@ -177,7 +182,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             destroy(ball: ball)
             score -= 1
         } else if object.name == "box" {
-            destroy(ball: ball)
+            destroy(ball: object)
         }
     }
     
