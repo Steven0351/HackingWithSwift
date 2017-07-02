@@ -13,6 +13,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var intensity: UISlider!
+    @IBOutlet weak var radius: UISlider!
+    @IBOutlet weak var scale: UISlider!
+    @IBOutlet weak var changeFilter: UIButton!
+    @IBOutlet weak var intensityStackView: UIStackView!
+    @IBOutlet weak var radiusStackView: UIStackView!
+    @IBOutlet weak var scaleStackView: UIStackView!
+   
     
     var currentImage: UIImage!
     var context: CIContext!
@@ -25,6 +32,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                                                             target: self, action: #selector(importPicture))
         context = CIContext()
         currentFilter = CIFilter(name: "CISepiaTone")
+        changeFilter.setTitle(currentFilter.name, for: .normal)
+        radiusStackView.isHidden = true
+        scaleStackView.isHidden = true
         
     }
     
@@ -34,7 +44,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         currentImage = image
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-        
         applyProcessing()
     }
 
@@ -51,16 +60,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey)
         }
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(intensity.value * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(radius.value * 200, forKey: kCIInputRadiusKey)
         }
         if inputKeys.contains(kCIInputScaleKey) {
-            currentFilter.setValue(intensity.value * 10, forKey: kCIInputScaleKey)
+            currentFilter.setValue(scale.value * 10, forKey: kCIInputScaleKey)
         }
         if inputKeys.contains(kCIInputCenterKey) {
             currentFilter.setValue(CIVector(x: currentImage.size.width / 2, y: currentImage.size.height / 2),
                                    forKey: kCIInputCenterKey)
         }
-               
+        
         if let cgimg = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
             let processedImage = UIImage(cgImage: cgimg)
             imageView.image = processedImage
@@ -70,9 +79,42 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func setFilter(action: UIAlertAction) {
         guard currentImage != nil else { return }
         currentFilter = CIFilter(name: action.title!)
+        
         let beginImage = CIImage(image: currentImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        changeFilter.setTitle(currentFilter.name, for: .normal)
+        
+        let inputKeys = currentFilter.inputKeys
+        if inputKeys.contains(kCIInputIntensityKey) {
+            intensityStackView.isHidden = false
+        } else {
+            intensityStackView.isHidden = true
+        }
+        if inputKeys.contains(kCIInputRadiusKey) {
+            radiusStackView.isHidden = false
+        } else {
+            radiusStackView.isHidden = true
+        }
+        if inputKeys.contains(kCIInputScaleKey) {
+            scaleStackView.isHidden = false
+        } else {
+            scaleStackView.isHidden = true
+        }
+
         applyProcessing()
+    }
+    
+    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos",
+                                       preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     
     @IBAction func changeFilter(_ sender: Any) {
@@ -93,6 +135,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func save(_ sender: Any) {
+        guard let image = imageView.image else {
+            let ac = UIAlertController(title: "Please choose a photo before saving", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(image, self,
+                                       #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
 }
 
