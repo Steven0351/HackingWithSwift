@@ -59,7 +59,8 @@ class ViewController: UIViewController {
     @IBAction func clearTapped(_ sender: Any) {
         currentAnswer.text = ""
         for btn in activatedButtons {
-            btn.isHidden = false
+            btn.alpha = 1
+            btn.isEnabled = true
         }
         activatedButtons.removeAll()
     }
@@ -114,7 +115,10 @@ class ViewController: UIViewController {
     func letterTapped(btn: UIButton) {
         currentAnswer.text = currentAnswer.text! + btn.titleLabel!.text!
         activatedButtons.append(btn)
-        btn.isHidden = true
+        UIButton.animate(withDuration: 0.5, delay: 0, options: [], animations: { [unowned btn] in
+            btn.alpha = 0.0
+        }, completion: nil)
+        btn.isEnabled = false
     }
 }
 
