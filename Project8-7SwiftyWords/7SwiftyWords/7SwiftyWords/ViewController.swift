@@ -59,7 +59,11 @@ class ViewController: UIViewController {
     @IBAction func clearTapped(_ sender: Any) {
         currentAnswer.text = ""
         for btn in activatedButtons {
-            btn.alpha = 1
+            UIButton.animate(withDuration: 0.5, delay: 0, options: [], animations: { [unowned btn] in
+                btn.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+                btn.transform = CGAffineTransform.identity
+                btn.alpha = 1.0
+                }, completion: nil)
             btn.isEnabled = true
         }
         activatedButtons.removeAll()
@@ -116,7 +120,10 @@ class ViewController: UIViewController {
         currentAnswer.text = currentAnswer.text! + btn.titleLabel!.text!
         activatedButtons.append(btn)
         UIButton.animate(withDuration: 0.5, delay: 0, options: [], animations: { [unowned btn] in
+            btn.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            btn.transform = CGAffineTransform.identity
             btn.alpha = 0.0
+            
         }, completion: nil)
         btn.isEnabled = false
     }
