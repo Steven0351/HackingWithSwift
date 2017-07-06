@@ -14,8 +14,9 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Countries"
         
-        let urlString = "http://api.worldbank.org/countries?per_page=500&format=json"
+        let urlString = "https://restcountries.eu/rest/v2/all"
         
         if let url = URL(string: urlString) {
             if let data = try? Data(contentsOf: url) {
@@ -36,12 +37,15 @@ class ViewController: UITableViewController {
         // format cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "Country", for: indexPath)
         let country = countries[indexPath.row]
-        cell.textLabel?.text = country["name"]
+        cell.textLabel?.text = country["Name"]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // display detail VC
+        let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as! DetailVC
+        vc.country = countries[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func showApiError() {
@@ -52,20 +56,26 @@ class ViewController: UITableViewController {
     }
 
     func parse(JSONdata json: JSON) {
-        for countryData in json[1].arrayValue {
-            if countryData["longitude"].stringValue == "" {
-                continue
-            }
-            let id = countryData["id"].stringValue
+        for countryData in json.arrayValue {
+            var currency: String
+            let id = countryData["alpha3Code"].stringValue
             let name = countryData["name"].stringValue
             print(name)
-            let region = countryData["region"]["value"].stringValue
-            let capital = countryData["capitalCity"].stringValue
-            let incomeLevel = countryData["incomeLevel"]["value"].stringValue
-            let country = ["id": id, "name": name, "region": region, "capital": capital, "incomeLevel": incomeLevel]
+            let region = countryData["subregion"].stringValue
+            let capital = countryData["capital"].stringValue
+            let rawCurrency = countryData["currencies"][0]["name"].stringValue
+            if let stringIndex = rawCurrency.characters.index(of: " ") {
+                currency = rawCurrency.substring(from: stringIndex).capitalized
+            } else {
+                currency = rawCurrency
+            }
+            let population = "\(countryData["population"].intValue)"
+            let size = "\(countryData["area"].doubleValue) KM^2"
+            let country = ["Name": name, "Region": region, "Capital": capital, "Size": size,
+                           "Population": population, "Currency": currency, "ID": id]
             countries.append(country)
         }
-        countries.sort(by: <#T##([String : String], [String : String]) -> Bool#>)
+        countries.sort { $0["Name"]! < $1["Name"]! }
     }
 }
 
