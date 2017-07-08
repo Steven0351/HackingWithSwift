@@ -27,3 +27,11 @@ class Note: NSObject, NSCoding {
         aCoder.encode(date, forKey: "date")
     }
 }
+
+extension Date {
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yy"
+        return dateFormatter.string(from: self)
+    }
+}

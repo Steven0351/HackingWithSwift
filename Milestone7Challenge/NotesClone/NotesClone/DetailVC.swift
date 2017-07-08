@@ -10,23 +10,55 @@ import UIKit
 
 class DetailVC: UIViewController {
 
+    @IBOutlet weak var textView: UITextView!
+    var note: Note?
+    var notes: [Note]?
+    var noteIndex: Int?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
-        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
-        navigationItem.rightBarButtonItems = [cancelButton, saveButton]
+    
+        
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(newNote))
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(removeNote))
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(share))
+        
+        navigationItem.rightBarButtonItems = [saveButton, deleteButton, shareButton]
+        
+        if let text = note?.text {
+            textView.text = text
+        } else {
+            textView.text = ""
+        }
     }
 
     func save() {
-        let vc = ViewController()
-        let savedData = NSKeyedArchiver.archivedData(withRootObject: vc.notes)
+        let savedData = NSKeyedArchiver.archivedData(withRootObject: notes!)
         let defaults = UserDefaults.standard
         defaults.set(savedData, forKey: "notes")
+        navigationController?.popToRootViewController(animated: true)
     }
     
-    func cancel() {
-        dismiss(animated: true, completion: nil)
+    func newNote() {
+        if let note = note {
+            note.text = textView.text
+        } else {
+            note = Note(text: textView.text)
+            notes!.append(note!)
+        }
+        save()
+    }
+    
+    func removeNote() {
+        if let noteIndex = noteIndex {
+            notes!.remove(at: noteIndex)
+            save()
+        }
+    }
+    
+    func share() {
+        // Share note
     }
 
 }

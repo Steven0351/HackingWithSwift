@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="hNQ-JV-yyJ" detailTextLabel="qBY-O5-AzU" style="IBUITableViewCellStyleSubtitle" id="fKA-oH-06V">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="hNQ-JV-yyJ" detailTextLabel="qBY-O5-AzU" style="IBUITableViewCellStyleSubtitle" id="fKA-oH-06V">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fKA-oH-06V" id="1jY-Sh-icC">
@@ -65,12 +65,29 @@
                     <view key="view" contentMode="scaleToFill" id="QYH-5O-UHg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ta0-uR-MP9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ta0-uR-MP9" firstAttribute="leading" secondItem="QYH-5O-UHg" secondAttribute="leading" id="9To-kH-JtF"/>
+                            <constraint firstItem="Ta0-uR-MP9" firstAttribute="top" secondItem="QYH-5O-UHg" secondAttribute="top" id="NxZ-Z8-aIh"/>
+                            <constraint firstItem="Ta0-uR-MP9" firstAttribute="bottom" secondItem="7pp-sQ-XHK" secondAttribute="top" id="kvC-aX-RJH"/>
+                            <constraint firstAttribute="trailing" secondItem="Ta0-uR-MP9" secondAttribute="trailing" id="onk-9o-7ya"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="Ta0-uR-MP9" id="BqI-ee-shH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hm8-cg-Hz6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1873" y="135"/>
+            <point key="canvasLocation" x="1872.8" y="134.48275862068968"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3OV-sW-upo">
