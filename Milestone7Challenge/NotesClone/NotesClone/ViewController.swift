@@ -8,15 +8,19 @@
 
 import UIKit
 
+var notes = [Note]()
+
 class ViewController: UITableViewController {
     
-    var notes = [Note]()
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Notes"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self,
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self,
                                                             action: #selector(newNote))
         
         let defaults = UserDefaults.standard
@@ -24,6 +28,7 @@ class ViewController: UITableViewController {
         if let savedNotes = defaults.object(forKey: "notes") as? Data {
             notes = NSKeyedUnarchiver.unarchiveObject(with: savedNotes) as! [Note]
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -44,14 +49,12 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailView") as! DetailVC
         vc.note = notes[indexPath.row]
-        vc.notes = notes
         vc.noteIndex = indexPath.row
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func newNote() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "DetailView") as! DetailVC
-        vc.notes = notes
         navigationController?.pushViewController(vc, animated: true)
     }
 }
