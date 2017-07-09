@@ -68,11 +68,11 @@ class WhackSlot: SKNode {
     func hit() {
         isHit = true
         
-        let delay = SKAction.wait(forDuration: 0.25)
+        let halfSpin = SKAction.rotate(byAngle: CGFloat.pi, duration: 0.125)
         let hide = SKAction.moveBy(x: 0, y: -80, duration: 0.5)
         let notVisible = SKAction.run { [unowned self] in
             self.isVisible = false
         }
-        charNode.run(SKAction.sequence([delay, hide, notVisible]))
+        charNode.run(SKAction.sequence([halfSpin, halfSpin, hide, notVisible]))
     }
 }
