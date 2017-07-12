@@ -9,33 +9,6 @@
 import SpriteKit
 import GameplayKit
 
-enum SequenceType: Int {
-    case twoNoBadTarget, twoWithBadTarget, three, four, random
-}
-
-enum ForceBadTarget {
-    case never, always, random
-}
-
-enum TargetSize: Int {
-    case big, medium, small
-}
-
-enum TargetSpeed: Double {
-    case big = 8.0
-    case medium = 5.0
-    case small = 2.0
-}
-
-enum Row: CGFloat {
-    case top = 590
-    case middle = 340
-    case bottom = 100
-    case leftStart = -55
-    case rightStart = 1084
-}
-
-
 class GameScene: SKScene {
     
     // - MARK: Properties
@@ -55,6 +28,9 @@ class GameScene: SKScene {
             }
         }
     }
+
+    var activeTargets = [SKSpriteNode]()
+    
     var reloadLabel: SKLabelNode!
     var scoreLabel: SKLabelNode!
     var score: Int = 0 {
@@ -64,6 +40,8 @@ class GameScene: SKScene {
     }
     
     var sequence: [SequenceType]!
+    var sequencePosition = 0
+    var nextSequenceQueued = true
     var gameTimer: Timer!
     var timeLabel: SKLabelNode!
 
@@ -89,9 +67,9 @@ class GameScene: SKScene {
         reloadLabel.fontColor = UIColor.clear
         addChild(reloadLabel)
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+//        gameTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
         
-        print(gameTimer.timeInterval)
+//        print(gameTimer.timeInterval)
         for multiplier in 0 ..< bulletsRemaining {
             let bullet = SKSpriteNode(imageNamed: "bullet")
             bullet.position = CGPoint(x: 50 + CGFloat(multiplier * 10),
@@ -102,8 +80,14 @@ class GameScene: SKScene {
         }
         
         sequence = [.twoNoBadTarget, .twoWithBadTarget, .three, .four, .random]
-        createTarget()
         
+        for _ in 0 ... 500 {
+            sequence.append(.random)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
+            self.runTargets()
+        }
     }
     
     
@@ -135,15 +119,27 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        if !nextSequenceQueued {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
+                    for child in self.children {
+                        if let childName = child.name {
+                            if !childName.contains("bad") || !childName.contains("good") {
+                                self.runTargets()
+                            }
+                        }
+                    }
+            }
+        }
+        nextSequenceQueued = true
     }
     
     // - MARK: Game Methods
     
-    func createTarget(forceBadTarget: ForceBadTarget = .random) {
+    func createTarget(at rowPosition: CGPoint, forceBadTarget: ForceBadTarget = .random) {
         
-        var goodTarget: SKSpriteNode!
-        var badTarget: SKSpriteNode!
-        var otherTarget: SKSpriteNode!
+//        var goodTarget: SKSpriteNode!
+//        var badTarget: SKSpriteNode!
+//        var otherTarget: SKSpriteNode!
         
         var target: SKSpriteNode!
         
@@ -160,40 +156,113 @@ class GameScene: SKScene {
             switch targetSize {
             case .big:
                 target = SKSpriteNode(imageNamed: "badTargetBig")
+                target.name = "badBig"
             case .medium:
                 target = SKSpriteNode(imageNamed: "badTargetMedium")
+                target.name = "badMedium"
             case .small:
                 target = SKSpriteNode(imageNamed: "badTargetSmall")
+                target.name = "badSmall"
             }
         } else {
             switch targetSize {
             case .big:
                 target = SKSpriteNode(imageNamed: "goodTargetBig")
+                target.name = "goodBig"
             case .medium:
                 target = SKSpriteNode(imageNamed: "goodTargetMedium")
+                target.name = "goodMedium"
             case .small:
                 target = SKSpriteNode(imageNamed: "goodTargetSmall")
+                target.name = "goodSmall"
             }
         }
         
-        target.position = rows["top"]!
+        let targetSpeed: Double
         
-        goodTarget = SKSpriteNode(imageNamed: "goodTargetBig")
-        badTarget = SKSpriteNode(imageNamed: "badTargetBig")
-        otherTarget = SKSpriteNode(imageNamed: "goodTargetBig")
+        if target.name!.contains("Big") {
+            targetSpeed = TargetSpeed.big.rawValue
+        } else if target.name!.contains("Medium") {
+            targetSpeed = TargetSpeed.medium.rawValue
+        } else {
+            targetSpeed = TargetSpeed.small.rawValue
+        }
         
-        goodTarget.position = rows["bottom"]!
-        badTarget.position = rows["top"]!
-        otherTarget.position = rows["middle"]!
+        target.position = rowPosition
+        addChild(target)
+        activeTargets.append(target)
+        DispatchQueue.main.asyncAfter(deadline: .now() + (targetSpeed * 0.25)) { 
+            if target.position.x == Row.leftStart.rawValue {
+                target.run(SKAction.move(to: CGPoint(x: Row.rightStart.rawValue, y: target.position.y), duration: targetSpeed)) {
+                    if target.position.x == Row.rightStart.rawValue {
+                        target.removeFromParent()
+                    }
+                }
+            } else {
+                target.run(SKAction.move(to: CGPoint(x: Row.leftStart.rawValue, y: target.position.y), duration: targetSpeed)) {
+                    if target.position.x == Row.leftStart.rawValue {
+                        target.removeFromParent()
+                    }
+                }
+            }
+        }
         
-        addChild(goodTarget)
-        addChild(badTarget)
-        addChild(otherTarget)
+//        goodTarget = SKSpriteNode(imageNamed: "goodTargetBig")
+//        badTarget = SKSpriteNode(imageNamed: "badTargetBig")
+//        otherTarget = SKSpriteNode(imageNamed: "goodTargetBig")
+//        
+//        goodTarget.position = rows["bottom"]!
+//        badTarget.position = rows["top"]!
+//        otherTarget.position = rows["middle"]!
+//        
+//        addChild(goodTarget)
+//        addChild(badTarget)
+//        addChild(otherTarget)
+//        
+//        goodTarget.run(SKAction.move(to: CGPoint(x: Row.rightStart.rawValue, y: goodTarget.position.y), duration: TargetSpeed.big.rawValue))
+//        badTarget.run(SKAction.move(to: CGPoint(x: Row.rightStart.rawValue, y: badTarget.position.y), duration: TargetSpeed.medium.rawValue))
+//        otherTarget.run(SKAction.move(to: CGPoint(x: Row.leftStart.rawValue, y: otherTarget.position.y), duration: TargetSpeed.medium.rawValue))
         
-        goodTarget.run(SKAction.move(to: CGPoint(x: Row.rightStart.rawValue, y: goodTarget.position.y), duration: TargetSpeed.big.rawValue))
-        badTarget.run(SKAction.move(to: CGPoint(x: Row.rightStart.rawValue, y: badTarget.position.y), duration: TargetSpeed.medium.rawValue))
-        otherTarget.run(SKAction.move(to: CGPoint(x: Row.leftStart.rawValue, y: otherTarget.position.y), duration: TargetSpeed.medium.rawValue))
+    }
+    
+    func runTargets() {
         
+        let sequenceType = sequence[sequencePosition]
+        
+        switch sequenceType {
+        case .twoNoBadTarget:
+            for (_, position) in rows {
+                createTarget(at: position, forceBadTarget: .never)
+                createTarget(at: position, forceBadTarget: .never)
+            }
+        case .twoWithBadTarget:
+            for (_, position) in rows {
+                createTarget(at: position, forceBadTarget: .never)
+                createTarget(at: position, forceBadTarget: .always)
+            }
+        case .three:
+            for (_, position) in rows {
+                createTarget(at: position)
+                createTarget(at: position)
+                createTarget(at: position)
+            }
+        case .four:
+            for (_, position) in rows {
+                createTarget(at: position)
+                createTarget(at: position)
+                createTarget(at: position)
+                createTarget(at: position)
+            }
+        case .random:
+            for (_, position) in rows {
+                let numTargets = RandomInt(min: 2, max: 7)
+                    for _ in 0 ... numTargets {
+                        createTarget(at: position)
+                    }
+            }
+        }
+        sequencePosition += 1
+        nextSequenceQueued = false
     }
     
     func reload() {
@@ -206,7 +275,6 @@ class GameScene: SKScene {
             bullets.append(bullet)
             addChild(bullet)
             reloadLabel.fontColor = UIColor.clear
-            print(gameTimer.timeInterval)
         }
         bulletsRemaining += 6
     }
