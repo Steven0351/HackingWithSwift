@@ -22,9 +22,8 @@ class GameScene: SKScene {
         didSet {
             guard let bullet = bullets.popLast() else { return }
             bullet.removeFromParent()
-            if bulletsRemaining <= 0 {
-                reloadLabel.fontColor = UIColor.white
-                return
+            if bulletsRemaining == 0 {
+                addChild(reloadLabel)
             }
         }
     }
@@ -43,12 +42,24 @@ class GameScene: SKScene {
     var sequencePosition = 0
     var nextSequenceQueued = true
     var gameTimer: Timer!
+    var timeTextLabel: SKLabelNode!
     var timeLabel: SKLabelNode!
+    var timeLeft: Int = 60 {
+        didSet {
+            timeLabel.text = "\(timeLeft)"
+            if timeLeft == 0 {
+                gameOver()
+            }
+        }
+    }
+    
+    var gameEnded = false
 
     // - MARK: Overriden Methods
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background")
+        background.name = "background"
         background.position = CGPoint(x: 512, y: 384)
         background.zPosition = -1
         background.blendMode = .replace
@@ -64,12 +75,24 @@ class GameScene: SKScene {
         reloadLabel.text = "Reload"
         reloadLabel.position = CGPoint(x: 512, y: 725)
         reloadLabel.zPosition = 0
-        reloadLabel.fontColor = UIColor.clear
-        addChild(reloadLabel)
+        reloadLabel.fontColor = UIColor.white
         
-//        gameTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+        timeTextLabel = SKLabelNode(fontNamed: "Chalkduster")
+        timeTextLabel.text = "Time Remaining:"
+        timeTextLabel.fontSize = 14
+        timeTextLabel.position = CGPoint(x: 110, y: 745)
+        timeTextLabel.zPosition = 0
+        addChild(timeTextLabel)
         
-//        print(gameTimer.timeInterval)
+        timeLabel = SKLabelNode(fontNamed: "Chalkduster")
+        timeLabel.text = "\(timeLeft)"
+        timeLabel.fontSize = 14
+        timeLabel.position = CGPoint(x: 194, y: 745)
+        timeLabel.zPosition = 0
+        addChild(timeLabel)
+        
+        
+        
         for multiplier in 0 ..< bulletsRemaining {
             let bullet = SKSpriteNode(imageNamed: "bullet")
             bullet.position = CGPoint(x: 50 + CGFloat(multiplier * 10),
@@ -87,11 +110,9 @@ class GameScene: SKScene {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [unowned self] in
             self.runTargets()
+            self.gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.decreaseTime), userInfo: nil, repeats: true)
         }
     }
-    
-    
-    
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -99,15 +120,36 @@ class GameScene: SKScene {
         let location = touch.location(in: self)
         let nodesAtPoint = nodes(at: location)
         
-        // - TODO: Destroy targets
-        
         for node in nodesAtPoint {
             if node.isEqual(to: reloadLabel) {
                 reload()
                 return
-            } else if bulletsRemaining > 0 {
-                bulletsRemaining -= 1
+            } else {
+                for activeTarget in activeTargets {
+                    if node.isEqual(to: activeTarget) {
+                        
+                    }
+                }
+                if bulletsRemaining > 0 {
+                    guard let targetName = node.name else { return }
+                    guard let target = node as? SKSpriteNode else { return }
+                    if targetName.contains("good") {
+                        goodTargetShot(targetName, target)
+                        bulletsRemaining -= 1
+                        return
+                    } else if targetName.contains("bad") {
+                        badTargetShot(target)
+                        bulletsRemaining -= 1
+                        return
+                    } else if targetName.contains("background") {
+                        bulletsRemaining -= 1
+                    }
+                }
             }
+        }
+        
+        if bulletsRemaining <= 0 {
+            reloadLabel.color = UIColor.white
         }
     }
     
@@ -115,35 +157,26 @@ class GameScene: SKScene {
         
     }
     
-    
-    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        if !nextSequenceQueued {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [unowned self] in
-                    for child in self.children {
-                        if let childName = child.name {
-                            if !childName.contains("bad") || !childName.contains("good") {
-                                self.runTargets()
-                            }
-                        }
-                    }
+        if !gameEnded {
+            if !nextSequenceQueued && activeTargets.isEmpty {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.75) { [unowned self] in
+                    self.runTargets()
+                }
+                nextSequenceQueued = true
+                print(nextSequenceQueued)
             }
         }
-        nextSequenceQueued = true
     }
     
     // - MARK: Game Methods
     
     func createTarget(at rowPosition: CGPoint, forceBadTarget: ForceBadTarget = .random) {
         
-//        var goodTarget: SKSpriteNode!
-//        var badTarget: SKSpriteNode!
-//        var otherTarget: SKSpriteNode!
-        
         var target: SKSpriteNode!
         
-        var targetType = RandomInt(min: 0, max: 6)
+        var targetType = RandomInt(min: 0, max: 5)
         let targetSize = TargetSize(rawValue: RandomInt(min: 0, max: 2))!
         
         if forceBadTarget == .always {
@@ -188,40 +221,28 @@ class GameScene: SKScene {
             targetSpeed = TargetSpeed.small.rawValue
         }
         
+        let randomSpacing = RandomDouble(min: 0.000, max: 0.999)
+        
         target.position = rowPosition
         addChild(target)
         activeTargets.append(target)
-        DispatchQueue.main.asyncAfter(deadline: .now() + (targetSpeed * 0.25)) { 
+        DispatchQueue.main.asyncAfter(deadline: .now() + (targetSpeed * randomSpacing)) {
             if target.position.x == Row.leftStart.rawValue {
                 target.run(SKAction.move(to: CGPoint(x: Row.rightStart.rawValue, y: target.position.y), duration: targetSpeed)) {
-                    if target.position.x == Row.rightStart.rawValue {
+                        if let targetIndex = self.activeTargets.index(of: target) {
+                            self.activeTargets.remove(at: targetIndex)
+                        }
                         target.removeFromParent()
-                    }
                 }
             } else {
                 target.run(SKAction.move(to: CGPoint(x: Row.leftStart.rawValue, y: target.position.y), duration: targetSpeed)) {
-                    if target.position.x == Row.leftStart.rawValue {
+                        if let targetIndex = self.activeTargets.index(of: target) {
+                            self.activeTargets.remove(at: targetIndex)
+                        }
                         target.removeFromParent()
-                    }
                 }
             }
         }
-        
-//        goodTarget = SKSpriteNode(imageNamed: "goodTargetBig")
-//        badTarget = SKSpriteNode(imageNamed: "badTargetBig")
-//        otherTarget = SKSpriteNode(imageNamed: "goodTargetBig")
-//        
-//        goodTarget.position = rows["bottom"]!
-//        badTarget.position = rows["top"]!
-//        otherTarget.position = rows["middle"]!
-//        
-//        addChild(goodTarget)
-//        addChild(badTarget)
-//        addChild(otherTarget)
-//        
-//        goodTarget.run(SKAction.move(to: CGPoint(x: Row.rightStart.rawValue, y: goodTarget.position.y), duration: TargetSpeed.big.rawValue))
-//        badTarget.run(SKAction.move(to: CGPoint(x: Row.rightStart.rawValue, y: badTarget.position.y), duration: TargetSpeed.medium.rawValue))
-//        otherTarget.run(SKAction.move(to: CGPoint(x: Row.leftStart.rawValue, y: otherTarget.position.y), duration: TargetSpeed.medium.rawValue))
         
     }
     
@@ -274,16 +295,60 @@ class GameScene: SKScene {
             bullet.zPosition = 0
             bullets.append(bullet)
             addChild(bullet)
-            reloadLabel.fontColor = UIColor.clear
         }
-        bulletsRemaining += 6
+        reloadLabel.removeFromParent()
+        bulletsRemaining = maxBullets
+
+    }
+    
+    func goodTargetShot(_ targetName: String, _ target: SKSpriteNode) {
+        
+        switch targetName {
+        case "goodBig":
+            score += 5
+        case "goodMedium":
+            score += 20
+        case "goodSmall":
+            score += 80
+        default:
+            break
+        }
+        
+        target.run(SKAction.fadeAlpha(to: 0.0, duration: 0.25)) {
+            if let targetIndex = self.activeTargets.index(of: target) {
+                self.activeTargets.remove(at: targetIndex)
+                target.removeFromParent()
+            }
+        }
+        
+    }
+    
+    func badTargetShot(_ target: SKSpriteNode) {
+        score -= 30
+        target.run(SKAction.fadeAlpha(to: 0.0, duration: 1)) {
+            if let targetIndex = self.activeTargets.index(of: target) {
+                self.activeTargets.remove(at: targetIndex)
+                target.removeFromParent()
+            }
+        }
+    }
+    
+    func decreaseTime() {
+        timeLeft -= 1
     }
     
     func gameOver() {
         let gameOverNode = SKSpriteNode(imageNamed: "gameOver")
         gameOverNode.position = CGPoint(x: 512, y: 384)
         gameOverNode.zPosition = 2
+        isUserInteractionEnabled = false
+        nextSequenceQueued = true
         addChild(gameOverNode)
+        for (index, target) in activeTargets.enumerated().reversed() {
+            activeTargets.remove(at: index)
+            target.removeFromParent()
+        }
+        gameEnded = true
         gameTimer.invalidate()
     }
 }
