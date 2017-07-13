@@ -30,7 +30,7 @@ extension String {
 extension UIView {
     func bounceOut(duration: TimeInterval) {
         UIView.animate(withDuration: duration) { [unowned self] in
-            self.transform = CGAffineTransform(translationX: 0.0001, y: 0.0001)
+            self.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
         }
     }
 }
@@ -38,6 +38,7 @@ extension UIView {
 var view = UIView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
 view.backgroundColor = UIColor.green
 view.bounceOut(duration: 10)
+
 
 extension Array {
     mutating func shuffle() {
@@ -50,6 +51,12 @@ array.shuffle()
 
 extension Array where Element: Comparable {
     mutating func remove(item: Element) {
-        
+        guard let index = self.index(of: item) else { return }
+        self.remove(at: index)
     }
 }
+
+var compArray = [1,2,3,4,5]
+compArray.remove(item: 1)
+compArray.remove(item: 1)
+
