@@ -28,6 +28,9 @@
 		624090681F18D4D00018F5E8 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6240905B1F18D4D00018F5E8 /* star@2x.png */; };
 		624090691F18D4D00018F5E8 /* vortex.png in Resources */ = {isa = PBXBuildFile; fileRef = 6240905C1F18D4D00018F5E8 /* vortex.png */; };
 		6240906A1F18D4D00018F5E8 /* vortex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6240905D1F18D4D00018F5E8 /* vortex@2x.png */; };
+		6240906C1F1A5A870018F5E8 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 6240906B1F1A5A870018F5E8 /* level2.txt */; };
+		6240906F1F1A7AAE0018F5E8 /* gameOver.png in Resources */ = {isa = PBXBuildFile; fileRef = 6240906D1F1A7AAE0018F5E8 /* gameOver.png */; };
+		624090701F1A7AAE0018F5E8 /* gameOver@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6240906E1F1A7AAE0018F5E8 /* gameOver@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +57,9 @@
 		6240905B1F18D4D00018F5E8 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
 		6240905C1F18D4D00018F5E8 /* vortex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vortex.png; sourceTree = "<group>"; };
 		6240905D1F18D4D00018F5E8 /* vortex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vortex@2x.png"; sourceTree = "<group>"; };
+		6240906B1F1A5A870018F5E8 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		6240906D1F1A7AAE0018F5E8 /* gameOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameOver.png; sourceTree = "<group>"; };
+		6240906E1F1A7AAE0018F5E8 /* gameOver@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gameOver@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +115,10 @@
 				624090541F18D4D00018F5E8 /* block@2x.png */,
 				624090551F18D4D00018F5E8 /* finish.png */,
 				624090561F18D4D00018F5E8 /* finish@2x.png */,
+				6240906D1F1A7AAE0018F5E8 /* gameOver.png */,
+				6240906E1F1A7AAE0018F5E8 /* gameOver@2x.png */,
 				624090571F18D4D00018F5E8 /* level1.txt */,
+				6240906B1F1A5A870018F5E8 /* level2.txt */,
 				624090581F18D4D00018F5E8 /* player.png */,
 				624090591F18D4D00018F5E8 /* player@2x.png */,
 				6240905A1F18D4D00018F5E8 /* star.png */,
@@ -185,12 +194,15 @@
 				6240906A1F18D4D00018F5E8 /* vortex@2x.png in Resources */,
 				624090681F18D4D00018F5E8 /* star@2x.png in Resources */,
 				624090691F18D4D00018F5E8 /* vortex.png in Resources */,
+				624090701F1A7AAE0018F5E8 /* gameOver@2x.png in Resources */,
+				6240906F1F1A7AAE0018F5E8 /* gameOver.png in Resources */,
 				624090651F18D4D00018F5E8 /* player.png in Resources */,
 				624090611F18D4D00018F5E8 /* block@2x.png in Resources */,
 				624090621F18D4D00018F5E8 /* finish.png in Resources */,
 				6240903B1F18D43A0018F5E8 /* GameScene.sks in Resources */,
 				624090461F18D43A0018F5E8 /* Assets.xcassets in Resources */,
 				6240905F1F18D4D00018F5E8 /* background@2x.jpg in Resources */,
+				6240906C1F1A5A870018F5E8 /* level2.txt in Resources */,
 				6240905E1F18D4D00018F5E8 /* background.jpg in Resources */,
 				624090491F18D43A0018F5E8 /* LaunchScreen.storyboard in Resources */,
 				6240903D1F18D43A0018F5E8 /* Actions.sks in Resources */,
