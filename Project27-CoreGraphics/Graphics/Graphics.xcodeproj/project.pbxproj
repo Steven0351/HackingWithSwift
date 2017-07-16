@@ -12,6 +12,8 @@
 		62E2C0D11F1A99110035A881 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C0CF1F1A99110035A881 /* Main.storyboard */; };
 		62E2C0D31F1A99110035A881 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C0D21F1A99110035A881 /* Assets.xcassets */; };
 		62E2C0D61F1A99110035A881 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C0D41F1A99110035A881 /* LaunchScreen.storyboard */; };
+		62E2C0DF1F1AE3FA0035A881 /* mouse.png in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C0DD1F1AE3FA0035A881 /* mouse.png */; };
+		62E2C0E01F1AE3FA0035A881 /* mouse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C0DE1F1AE3FA0035A881 /* mouse@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		62E2C0D21F1A99110035A881 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62E2C0D51F1A99110035A881 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62E2C0D71F1A99110035A881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62E2C0DD1F1AE3FA0035A881 /* mouse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouse.png; sourceTree = "<group>"; };
+		62E2C0DE1F1AE3FA0035A881 /* mouse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mouse@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				62E2C0CB1F1A99110035A881 /* AppDelegate.swift */,
 				62E2C0CD1F1A99110035A881 /* ViewController.swift */,
 				62E2C0CF1F1A99110035A881 /* Main.storyboard */,
+				62E2C0DD1F1AE3FA0035A881 /* mouse.png */,
+				62E2C0DE1F1AE3FA0035A881 /* mouse@2x.png */,
 				62E2C0D21F1A99110035A881 /* Assets.xcassets */,
 				62E2C0D41F1A99110035A881 /* LaunchScreen.storyboard */,
 				62E2C0D71F1A99110035A881 /* Info.plist */,
@@ -124,7 +130,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E2C0E01F1AE3FA0035A881 /* mouse@2x.png in Resources */,
 				62E2C0D61F1A99110035A881 /* LaunchScreen.storyboard in Resources */,
+				62E2C0DF1F1AE3FA0035A881 /* mouse.png in Resources */,
 				62E2C0D31F1A99110035A881 /* Assets.xcassets in Resources */,
 				62E2C0D11F1A99110035A881 /* Main.storyboard in Resources */,
 			);

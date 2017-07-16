@@ -64,6 +64,74 @@ class ViewController: UIViewController {
         }
         imageView.image = img
     }
+    
+    func drawRotatedSquares() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let img = renderer.image { ctx in
+            ctx.cgContext.translateBy(x: 256, y: 256)
+            
+            let rotations = 32
+            let amount = Double.pi / Double(rotations)
+            
+            for _ in 0 ..< rotations {
+                ctx.cgContext.rotate(by: CGFloat(amount))
+                ctx.cgContext.addRect(CGRect(x: -128, y: -128, width: 256, height: 256))
+            }
+            
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.strokePath()
+        }
+        imageView.image = img
+    }
+    
+    func drawLines() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let img = renderer.image { ctx in
+            ctx.cgContext.translateBy(x: 256, y: 256)
+            
+            var first = true
+            var length: CGFloat = 256
+            
+            for _ in 0 ..< 256 {
+                ctx.cgContext.rotate(by: CGFloat.pi / 2)
+                
+                if first {
+                    ctx.cgContext.move(to: CGPoint(x: length, y: 50))
+                    first = false
+                } else {
+                    ctx.cgContext.addLine(to: CGPoint(x: length, y: 50))
+                }
+                length *= 0.99
+            }
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.strokePath()
+        }
+        imageView.image = img
+    }
+    
+    func drawImagesAndText() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let img = renderer.image { ctx in
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let attrs = [NSFontAttributeName: UIFont(name: "HelveticaNeue-Thin", size: 36)!,
+                         NSParagraphStyleAttributeName: paragraphStyle]
+            
+            let string = "The best-laid schemes o'\nmice and' men gang aft agley"
+            string.draw(with: CGRect(x: 32, y: 32, width: 448, height: 448), options: .usesLineFragmentOrigin,
+                        attributes: attrs, context: nil)
+
+            let mouse = UIImage(named: "mouse")
+            mouse?.draw(at: CGPoint(x: 300, y: 150))
+        }
+        imageView.image = img
+
+    }
+
 
     @IBAction func redrawTapped(_ sender: Any) {
         currentDrawType += 1
@@ -79,6 +147,12 @@ class ViewController: UIViewController {
             drawCircle()
         case 2:
             drawCheckerboard()
+        case 3:
+            drawRotatedSquares()
+        case 4:
+            drawLines()
+        case 5:
+            drawImagesAndText()
         default:
             break
         }
