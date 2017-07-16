@@ -17,6 +17,8 @@ enum CollisionTypes: UInt32 {
 
 class GameScene: SKScene {
     
+    weak var viewController: GameViewController!
+    
     var buildings = [BuildingNode]()
     
     override func didMove(to view: SKView) {
@@ -48,5 +50,9 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    func launch(angle: Int, velocity: Int) {
+        
     }
 }
