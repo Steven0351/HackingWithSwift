@@ -64,6 +64,7 @@
 		62E2C10E1F1B57400035A881 /* ExplodingMonkeys */ = {
 			isa = PBXGroup;
 			children = (
+				62E2C12B1F1C17A70035A881 /* Assets.atlas */,
 				62E2C10F1F1B57400035A881 /* AppDelegate.swift */,
 				62E2C1111F1B57400035A881 /* GameScene.sks */,
 				62E2C1131F1B57400035A881 /* Actions.sks */,
@@ -77,6 +78,13 @@
 				62E2C1291F1B57FB0035A881 /* BuildingNode.swift */,
 			);
 			path = ExplodingMonkeys;
+			sourceTree = "<group>";
+		};
+		62E2C12B1F1C17A70035A881 /* Assets.atlas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets.atlas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
