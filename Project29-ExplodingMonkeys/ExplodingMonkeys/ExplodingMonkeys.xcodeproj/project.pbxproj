@@ -17,6 +17,9 @@
 		62E2C1201F1B57400035A881 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C11E1F1B57400035A881 /* LaunchScreen.storyboard */; };
 		62E2C1281F1B57AC0035A881 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2C1271F1B57AC0035A881 /* Helper.swift */; };
 		62E2C12A1F1B57FB0035A881 /* BuildingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E2C1291F1B57FB0035A881 /* BuildingNode.swift */; };
+		62E2C12E1F1C42200035A881 /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C12C1F1C42200035A881 /* hitBuilding.sks */; };
+		62E2C12F1F1C42200035A881 /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C12D1F1C42200035A881 /* hitPlayer.sks */; };
+		62E2C1311F1C42550035A881 /* Assets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 62E2C1301F1C42550035A881 /* Assets.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		62E2C1211F1B57400035A881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62E2C1271F1B57AC0035A881 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		62E2C1291F1B57FB0035A881 /* BuildingNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingNode.swift; sourceTree = "<group>"; };
+		62E2C12C1F1C42200035A881 /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
+		62E2C12D1F1C42200035A881 /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
+		62E2C1301F1C42550035A881 /* Assets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Assets.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,27 +70,22 @@
 		62E2C10E1F1B57400035A881 /* ExplodingMonkeys */ = {
 			isa = PBXGroup;
 			children = (
-				62E2C12B1F1C17A70035A881 /* Assets.atlas */,
 				62E2C10F1F1B57400035A881 /* AppDelegate.swift */,
 				62E2C1111F1B57400035A881 /* GameScene.sks */,
 				62E2C1131F1B57400035A881 /* Actions.sks */,
 				62E2C1151F1B57400035A881 /* GameScene.swift */,
 				62E2C1171F1B57400035A881 /* GameViewController.swift */,
 				62E2C1271F1B57AC0035A881 /* Helper.swift */,
+				62E2C12C1F1C42200035A881 /* hitBuilding.sks */,
+				62E2C12D1F1C42200035A881 /* hitPlayer.sks */,
 				62E2C1191F1B57400035A881 /* Main.storyboard */,
+				62E2C1301F1C42550035A881 /* Assets.atlas */,
 				62E2C11C1F1B57400035A881 /* Assets.xcassets */,
 				62E2C11E1F1B57400035A881 /* LaunchScreen.storyboard */,
 				62E2C1211F1B57400035A881 /* Info.plist */,
 				62E2C1291F1B57FB0035A881 /* BuildingNode.swift */,
 			);
 			path = ExplodingMonkeys;
-			sourceTree = "<group>";
-		};
-		62E2C12B1F1C17A70035A881 /* Assets.atlas */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Assets.atlas;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,11 +148,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E2C12F1F1C42200035A881 /* hitPlayer.sks in Resources */,
 				62E2C11B1F1B57400035A881 /* Main.storyboard in Resources */,
+				62E2C1311F1C42550035A881 /* Assets.atlas in Resources */,
 				62E2C1121F1B57400035A881 /* GameScene.sks in Resources */,
 				62E2C11D1F1B57400035A881 /* Assets.xcassets in Resources */,
 				62E2C1201F1B57400035A881 /* LaunchScreen.storyboard in Resources */,
 				62E2C1141F1B57400035A881 /* Actions.sks in Resources */,
+				62E2C12E1F1C42200035A881 /* hitBuilding.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
