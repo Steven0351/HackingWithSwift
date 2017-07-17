@@ -42,6 +42,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3q-Da-RYK">
+                                <rect key="frame" x="22" y="64" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEk-jR-Ria">
                                 <rect key="frame" x="785" y="24" width="120" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -67,6 +74,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVt-gs-nUe">
+                                <rect key="frame" x="884" y="64" width="120" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -74,6 +88,8 @@
                         <outlet property="angleLabel" destination="Cv6-lc-lOa" id="Hio-kG-fNO"/>
                         <outlet property="angleSlider" destination="jkH-eW-0Bt" id="sLS-vx-Bmg"/>
                         <outlet property="launchButton" destination="PT8-TC-2oi" id="FMn-DT-Ibx"/>
+                        <outlet property="player1Score" destination="V3q-Da-RYK" id="ucr-aH-maV"/>
+                        <outlet property="player2Score" destination="uVt-gs-nUe" id="oFP-IV-ran"/>
                         <outlet property="playerNumber" destination="gJv-cg-IdY" id="6uZ-el-IeB"/>
                         <outlet property="velocityLabel" destination="aEk-jR-Ria" id="MtU-ak-uFM"/>
                         <outlet property="velocitySlider" destination="mcV-pc-8J8" id="0cO-Ab-Q8z"/>

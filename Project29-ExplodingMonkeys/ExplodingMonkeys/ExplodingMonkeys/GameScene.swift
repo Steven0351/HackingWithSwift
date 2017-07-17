@@ -21,9 +21,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player1: SKSpriteNode!
     var player2: SKSpriteNode!
     var banana: SKSpriteNode!
+    var winLabel: SKLabelNode!
     
     var currentPlayer = 1
     var buildings = [BuildingNode]()
+    var gameOver = false
+    var player1Score: Int = 0 {
+        didSet {
+            viewController.player1Score.text = "Score: \(player1Score)"
+        }
+    }
+    var player2Score: Int = 0 {
+        didSet {
+            viewController.player2Score.text = "Score: \(player2Score)"
+        }
+    }
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -49,10 +61,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-       
-    }
-    
     
     override func update(_ currentTime: TimeInterval) {
         if banana != nil {
@@ -69,6 +77,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         
+        
+        
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
             firstBody = contact.bodyA
             secondBody = contact.bodyB
@@ -84,10 +94,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
                 if firstNode.name == "banana" && secondNode.name == "player1" {
+                    player2Score += 1
                     destroy(player: player1)
                 }
                 
                 if firstNode.name == "banana" && secondNode.name == "player2" {
+                    player1Score += 1
                     destroy(player: player2)
                 }
             }
@@ -102,13 +114,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.removeFromParent()
         banana?.removeFromParent()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [unowned self] in
+        var delay = 2.0
+        
+        if player1Score == 3 || player2Score == 3 {
+            let winText = player1Score > player2Score ? "Player 1 Wins!" : "Player 2 Wins!"
+            winLabel = SKLabelNode(fontNamed: "Avenir Next")
+            winLabel.text = winText
+            winLabel.fontColor = UIColor.red
+            winLabel.fontSize = 78
+            winLabel.position = CGPoint(x: 512, y: 384)
+            winLabel.zPosition = 1
+            addChild(winLabel)
+            gameOver = true
+            delay = 5.0
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [unowned self] in
+            
+            if self.gameOver {
+                self.player1Score = 0
+                self.player2Score = 0
+                self.winLabel.removeFromParent()
+                self.gameOver = false
+                delay = 2.0
+            }
+            
             let newGame = GameScene(size: self.size)
             newGame.viewController = self.viewController
             self.viewController.currentGame = newGame
             
             self.changePlayer()
             newGame.currentPlayer = self.currentPlayer
+            newGame.player1Score = self.player1Score
+            newGame.player2Score = self.player2Score
             
             let transition = SKTransition.doorway(withDuration: 1.5)
             self.view?.presentScene(newGame, transition: transition)
