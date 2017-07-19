@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eRH-Bf-lWA">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MultiBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bp5-VU-LJ7">
+                                <rect key="frame" x="5" y="69" width="758" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="XPr-dz-ea6"/>
+                                </connections>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HPc-Py-D6e">
+                                <rect key="frame" x="0.0" y="104" width="768" height="920"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Bp5-VU-LJ7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="1lJ-Vw-6Hq"/>
+                            <constraint firstItem="HPc-Py-D6e" firstAttribute="top" secondItem="Bp5-VU-LJ7" secondAttribute="bottom" constant="5" id="7du-ae-Nw9"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HPc-Py-D6e" secondAttribute="bottom" id="EGG-jt-zRk"/>
+                            <constraint firstItem="Bp5-VU-LJ7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="K0V-E9-AUa"/>
+                            <constraint firstAttribute="trailing" secondItem="Bp5-VU-LJ7" secondAttribute="trailing" constant="5" id="QW4-3y-q72"/>
+                            <constraint firstAttribute="trailing" secondItem="HPc-Py-D6e" secondAttribute="trailing" id="Uty-5n-3HE"/>
+                            <constraint firstItem="HPc-Py-D6e" firstAttribute="top" secondItem="Bp5-VU-LJ7" secondAttribute="bottom" constant="5" id="weP-6i-YmG"/>
+                            <constraint firstItem="HPc-Py-D6e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xbX-Jf-uYA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="P5K-sM-lUP"/>
+                    <connections>
+                        <outlet property="addressBar" destination="Bp5-VU-LJ7" id="p09-3D-zkD"/>
+                        <outlet property="stackView" destination="HPc-Py-D6e" id="zVb-wr-7tB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="903.125" y="138.8671875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ozH-ai-3Rj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eRH-Bf-lWA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Klc-Rw-6hq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="1eU-Gh-tuM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5SH-aa-SH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="197" y="139"/>
+        </scene>
+    </scenes>
+</document>
