@@ -13,6 +13,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     
     var publicPhotos = [String]()
     var secretPhotos = [String]()
+    
     var isAuthenticated = false
     
     override func viewDidLoad() {
@@ -20,33 +21,16 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         title = "Puppies"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self,
                                                             action: #selector(choosePicture))
+        navigationItem.rightBarButtonItem?.isEnabled = false
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(hide),
                                        name: Notification.Name.UIApplicationWillResignActive, object: nil)
-        
-        let fileManager = FileManager.default
-        let puppyPath = Bundle.main.resourcePath!
-        if let puppies = try? fileManager.contentsOfDirectory(atPath: puppyPath) {
-            for puppy in puppies {
-                print(puppy)
-                if puppy.contains("puppy") {
-                    publicPhotos.append(puppy)
-                }
-            }
-        }
-        let secretPath = getDocumentsDirectory().path
-        if let secrets = try? fileManager.contentsOfDirectory(atPath: secretPath) {
-            for secret in secrets {
-                secretPhotos.append(secret)
-            }
-        } else {
-            print("Failed")
-        }
-        
+//        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        loadData()
         collectionView?.reloadData()
     }
     
@@ -93,6 +77,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             let picker = UIImagePickerController()
             picker.sourceType = .camera
             picker.allowsEditing = true
+            picker.delegate = self
             self.present(picker, animated: true)
         })
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -121,6 +106,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         }
     }
     
+    
+    
     func authenticate() {
         let context = LAContext()
         var error: NSError?
@@ -134,6 +121,8 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
                     if success {
                         self.isAuthenticated = true
                         self.collectionView?.reloadData()
+                        self.navigationItem.rightBarButtonItem?.isEnabled = true
+                        self.title = "Vault"
                     }
                 }
             }
@@ -145,9 +134,41 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         return paths[0]
     }
     
+    func loadData() {
+        let fileManager = FileManager.default
+        let puppyPath = Bundle.main.resourcePath!
+        if let puppies = try? fileManager.contentsOfDirectory(atPath: puppyPath) {
+            if !publicPhotos.isEmpty {
+                publicPhotos.removeAll()
+            }
+            for puppy in puppies {
+                print(puppy)
+                if puppy.contains("puppy") {
+                    publicPhotos.append(puppy)
+                }
+            }
+            
+        }
+        let secretPath = getDocumentsDirectory().path
+        if let secrets = try? fileManager.contentsOfDirectory(atPath: secretPath) {
+            if !secretPhotos.isEmpty {
+                secretPhotos.removeAll()
+            }
+            for secret in secrets {
+                secretPhotos.append(secret)
+            }
+            
+        } else {
+            print("Failed")
+        }
+
+    }
+    
     func hide() {
         isAuthenticated = false
+        navigationItem.rightBarButtonItem?.isEnabled = false
         collectionView?.reloadData()
+        title = "Puppies"
     }
 
     override func becomeFirstResponder() -> Bool {

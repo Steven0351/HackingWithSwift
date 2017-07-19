@@ -11,19 +11,38 @@ import UIKit
 class DetailVC: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
-    weak var viewController: ViewController!
     var selectedImage = ""
+    weak var vc: ViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if viewController.publicPhotos.contains(selectedImage) {
-//            imageView.image = UIImage(named: selectedImage)
-//        } else {
-//            let path = viewController.getDocumentsDirectory().appendingPathComponent(selectedImage)
-//            imageView.image = UIImage(contentsOfFile: path.path)
-//        }
+        if selectedImage.contains("puppy") {
+            imageView.image = UIImage(named: selectedImage)
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self,
+                                                                action: #selector(deletePhoto))
+            let path = getDocumentsDirectory().appendingPathComponent(selectedImage)
+            imageView.image = UIImage(contentsOfFile: path.path)
+        }
         
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
+    }
+    
+    func deletePhoto() {
+        let fileManager = FileManager.default
+        do {
+            try fileManager.removeItem(atPath: getDocumentsDirectory().appendingPathComponent(selectedImage).path)
+            navigationController?.popToRootViewController(animated: true)
+        } catch {
+            let ac = UIAlertController(title: "Error", message: "Your image was not deleted", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
 
 }
