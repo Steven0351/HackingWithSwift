@@ -1,0 +1,349 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		624F94001F20C31C006B180E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F93FF1F20C31C006B180E /* AppDelegate.swift */; };
+		624F94021F20C31C006B180E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94011F20C31C006B180E /* ViewController.swift */; };
+		624F94051F20C31C006B180E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624F94031F20C31C006B180E /* Main.storyboard */; };
+		624F94071F20C31C006B180E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 624F94061F20C31C006B180E /* Assets.xcassets */; };
+		624F940A1F20C31C006B180E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624F94081F20C31C006B180E /* LaunchScreen.storyboard */; };
+		624F94121F20C481006B180E /* RecordWhistleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94111F20C481006B180E /* RecordWhistleViewController.swift */; };
+		624F94141F20D265006B180E /* SelectGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94131F20D265006B180E /* SelectGenreViewController.swift */; };
+		624F94161F20D47B006B180E /* AddCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94151F20D47B006B180E /* AddCommentsViewController.swift */; };
+		624F94181F20D6A8006B180E /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94171F20D6A8006B180E /* SubmitViewController.swift */; };
+		624F941C1F20D920006B180E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 624F941B1F20D920006B180E /* CloudKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		624F93FC1F20C31C006B180E /* WhatsThatWhistle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsThatWhistle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		624F93FF1F20C31C006B180E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		624F94011F20C31C006B180E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		624F94041F20C31C006B180E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		624F94061F20C31C006B180E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		624F94091F20C31C006B180E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		624F940B1F20C31C006B180E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		624F94111F20C481006B180E /* RecordWhistleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordWhistleViewController.swift; sourceTree = "<group>"; };
+		624F94131F20D265006B180E /* SelectGenreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGenreViewController.swift; sourceTree = "<group>"; };
+		624F94151F20D47B006B180E /* AddCommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
+		624F94171F20D6A8006B180E /* SubmitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
+		624F94191F20D91B006B180E /* WhatsThatWhistle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhatsThatWhistle.entitlements; sourceTree = "<group>"; };
+		624F941B1F20D920006B180E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		624F93F91F20C31C006B180E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				624F941C1F20D920006B180E /* CloudKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		624F93F31F20C31C006B180E = {
+			isa = PBXGroup;
+			children = (
+				624F93FE1F20C31C006B180E /* WhatsThatWhistle */,
+				624F93FD1F20C31C006B180E /* Products */,
+				624F941A1F20D920006B180E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		624F93FD1F20C31C006B180E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				624F93FC1F20C31C006B180E /* WhatsThatWhistle.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		624F93FE1F20C31C006B180E /* WhatsThatWhistle */ = {
+			isa = PBXGroup;
+			children = (
+				624F94191F20D91B006B180E /* WhatsThatWhistle.entitlements */,
+				624F93FF1F20C31C006B180E /* AppDelegate.swift */,
+				624F94011F20C31C006B180E /* ViewController.swift */,
+				624F94031F20C31C006B180E /* Main.storyboard */,
+				624F94061F20C31C006B180E /* Assets.xcassets */,
+				624F94081F20C31C006B180E /* LaunchScreen.storyboard */,
+				624F940B1F20C31C006B180E /* Info.plist */,
+				624F94111F20C481006B180E /* RecordWhistleViewController.swift */,
+				624F94131F20D265006B180E /* SelectGenreViewController.swift */,
+				624F94151F20D47B006B180E /* AddCommentsViewController.swift */,
+				624F94171F20D6A8006B180E /* SubmitViewController.swift */,
+			);
+			path = WhatsThatWhistle;
+			sourceTree = "<group>";
+		};
+		624F941A1F20D920006B180E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				624F941B1F20D920006B180E /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		624F93FB1F20C31C006B180E /* WhatsThatWhistle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 624F940E1F20C31C006B180E /* Build configuration list for PBXNativeTarget "WhatsThatWhistle" */;
+			buildPhases = (
+				624F93F81F20C31C006B180E /* Sources */,
+				624F93F91F20C31C006B180E /* Frameworks */,
+				624F93FA1F20C31C006B180E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WhatsThatWhistle;
+			productName = WhatsThatWhistle;
+			productReference = 624F93FC1F20C31C006B180E /* WhatsThatWhistle.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		624F93F41F20C31C006B180E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Steven Sherry";
+				TargetAttributes = {
+					624F93FB1F20C31C006B180E = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = EWSMAH6SD7;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 624F93F71F20C31C006B180E /* Build configuration list for PBXProject "WhatsThatWhistle" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 624F93F31F20C31C006B180E;
+			productRefGroup = 624F93FD1F20C31C006B180E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				624F93FB1F20C31C006B180E /* WhatsThatWhistle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		624F93FA1F20C31C006B180E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				624F940A1F20C31C006B180E /* LaunchScreen.storyboard in Resources */,
+				624F94071F20C31C006B180E /* Assets.xcassets in Resources */,
+				624F94051F20C31C006B180E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		624F93F81F20C31C006B180E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				624F94021F20C31C006B180E /* ViewController.swift in Sources */,
+				624F94161F20D47B006B180E /* AddCommentsViewController.swift in Sources */,
+				624F94001F20C31C006B180E /* AppDelegate.swift in Sources */,
+				624F94141F20D265006B180E /* SelectGenreViewController.swift in Sources */,
+				624F94181F20D6A8006B180E /* SubmitViewController.swift in Sources */,
+				624F94121F20C481006B180E /* RecordWhistleViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		624F94031F20C31C006B180E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				624F94041F20C31C006B180E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		624F94081F20C31C006B180E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				624F94091F20C31C006B180E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		624F940C1F20C31C006B180E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		624F940D1F20C31C006B180E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		624F940F1F20C31C006B180E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WhatsThatWhistle/WhatsThatWhistle.entitlements;
+				DEVELOPMENT_TEAM = EWSMAH6SD7;
+				INFOPLIST_FILE = WhatsThatWhistle/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.affinityforapps.WhatsThatWhistle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		624F94101F20C31C006B180E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WhatsThatWhistle/WhatsThatWhistle.entitlements;
+				DEVELOPMENT_TEAM = EWSMAH6SD7;
+				INFOPLIST_FILE = WhatsThatWhistle/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.affinityforapps.WhatsThatWhistle;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		624F93F71F20C31C006B180E /* Build configuration list for PBXProject "WhatsThatWhistle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				624F940C1F20C31C006B180E /* Debug */,
+				624F940D1F20C31C006B180E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		624F940E1F20C31C006B180E /* Build configuration list for PBXNativeTarget "WhatsThatWhistle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				624F940F1F20C31C006B180E /* Debug */,
+				624F94101F20C31C006B180E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 624F93F41F20C31C006B180E /* Project object */;
+}
