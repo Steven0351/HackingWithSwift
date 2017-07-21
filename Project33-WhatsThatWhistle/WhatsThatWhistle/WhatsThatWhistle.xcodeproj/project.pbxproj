@@ -19,6 +19,7 @@
 		624F941C1F20D920006B180E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 624F941B1F20D920006B180E /* CloudKit.framework */; };
 		624F941E1F214F49006B180E /* Whistle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F941D1F214F49006B180E /* Whistle.swift */; };
 		624F94201F2156EC006B180E /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F941F1F2156EC006B180E /* ResultsViewController.swift */; };
+		624F94221F2180E3006B180E /* MyGenresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94211F2180E3006B180E /* MyGenresViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		624F941B1F20D920006B180E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		624F941D1F214F49006B180E /* Whistle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Whistle.swift; sourceTree = "<group>"; };
 		624F941F1F2156EC006B180E /* ResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		624F94211F2180E3006B180E /* MyGenresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGenresViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				624F94171F20D6A8006B180E /* SubmitViewController.swift */,
 				624F941D1F214F49006B180E /* Whistle.swift */,
 				624F941F1F2156EC006B180E /* ResultsViewController.swift */,
+				624F94211F2180E3006B180E /* MyGenresViewController.swift */,
 			);
 			path = WhatsThatWhistle;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				624F94161F20D47B006B180E /* AddCommentsViewController.swift in Sources */,
 				624F94001F20C31C006B180E /* AppDelegate.swift in Sources */,
 				624F94141F20D265006B180E /* SelectGenreViewController.swift in Sources */,
+				624F94221F2180E3006B180E /* MyGenresViewController.swift in Sources */,
 				624F941E1F214F49006B180E /* Whistle.swift in Sources */,
 				624F94181F20D6A8006B180E /* SubmitViewController.swift in Sources */,
 				624F94121F20C481006B180E /* RecordWhistleViewController.swift in Sources */,
