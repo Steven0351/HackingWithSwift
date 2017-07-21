@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8TZ-5h-kS4">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FourInARow" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Qf2-aZ-Gcg">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mw2-zP-CWb">
+                                        <rect key="frame" x="0.0" y="0.0" width="144.5" height="704"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wl4-CY-O91"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K4k-oV-lI9">
+                                        <rect key="frame" x="146.5" y="0.0" width="144.5" height="704"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="reE-ih-BQR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vj9-b1-XBb">
+                                        <rect key="frame" x="293" y="0.0" width="144.5" height="704"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3nh-Ez-KnK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x5E-1M-YAr">
+                                        <rect key="frame" x="439.5" y="0.0" width="145" height="704"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TNQ-dT-cnN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcF-oJ-uAg">
+                                        <rect key="frame" x="586.5" y="0.0" width="144.5" height="704"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zkw-A6-i6s"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njf-FC-EJF">
+                                        <rect key="frame" x="733" y="0.0" width="144.5" height="704"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GNA-5P-fJW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEG-kJ-10n">
+                                        <rect key="frame" x="879.5" y="0.0" width="144.5" height="704"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="makeMove:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y0u-DA-TsG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qf2-aZ-Gcg" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="3G3-2v-GIk"/>
+                            <constraint firstItem="Qf2-aZ-Gcg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="KU2-i2-R7A"/>
+                            <constraint firstItem="Qf2-aZ-Gcg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Sy8-hX-1OF"/>
+                            <constraint firstAttribute="trailing" secondItem="Qf2-aZ-Gcg" secondAttribute="trailing" id="xaq-KO-2ro"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cqR-2L-LXs"/>
+                    <connections>
+                        <outletCollection property="columnButtons" destination="mw2-zP-CWb" collectionClass="NSMutableArray" id="DFm-Q8-Xi0"/>
+                        <outletCollection property="columnButtons" destination="K4k-oV-lI9" collectionClass="NSMutableArray" id="QTY-Tq-hS5"/>
+                        <outletCollection property="columnButtons" destination="Vj9-b1-XBb" collectionClass="NSMutableArray" id="pl1-ob-Gbu"/>
+                        <outletCollection property="columnButtons" destination="x5E-1M-YAr" collectionClass="NSMutableArray" id="y5v-l9-DH7"/>
+                        <outletCollection property="columnButtons" destination="DcF-oJ-uAg" collectionClass="NSMutableArray" id="SRm-zz-iwc"/>
+                        <outletCollection property="columnButtons" destination="njf-FC-EJF" collectionClass="NSMutableArray" id="IJK-VI-7le"/>
+                        <outletCollection property="columnButtons" destination="CEG-kJ-10n" collectionClass="NSMutableArray" id="Eue-JU-bYL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861.9140625" y="137.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nEC-3c-dB5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8TZ-5h-kS4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="sLK-HK-pzR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TIk-rE-8Ig"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sbl-a2-vDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="80" y="138"/>
+        </scene>
+    </scenes>
+</document>
