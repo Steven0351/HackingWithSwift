@@ -13,6 +13,12 @@
 		624F94D61F23BA7C006B180E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 624F94D51F23BA7C006B180E /* Assets.xcassets */; };
 		624F94D91F23BA7C006B180E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 624F94D71F23BA7C006B180E /* LaunchScreen.storyboard */; };
 		624F94E11F23BB4A006B180E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94E01F23BB4A006B180E /* DetailViewController.swift */; };
+		624F94E41F243061006B180E /* GitHubCommits.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 624F94E21F243060006B180E /* GitHubCommits.xcdatamodeld */; };
+		624F94E71F243679006B180E /* Commit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94E51F243679006B180E /* Commit+CoreDataClass.swift */; };
+		624F94E81F243679006B180E /* Commit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94E61F243679006B180E /* Commit+CoreDataProperties.swift */; };
+		624F94EA1F243815006B180E /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94E91F243815006B180E /* SwiftyJSON.swift */; };
+		624F94ED1F24519B006B180E /* Author+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94EB1F24519B006B180E /* Author+CoreDataClass.swift */; };
+		624F94EE1F24519B006B180E /* Author+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624F94EC1F24519B006B180E /* Author+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		624F94D81F23BA7C006B180E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		624F94DA1F23BA7C006B180E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		624F94E01F23BB4A006B180E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		624F94E31F243060006B180E /* GitHubCommits.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitHubCommits.xcdatamodel; sourceTree = "<group>"; };
+		624F94E51F243679006B180E /* Commit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataClass.swift"; sourceTree = "<group>"; };
+		624F94E61F243679006B180E /* Commit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		624F94E91F243815006B180E /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		624F94EB1F24519B006B180E /* Author+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataClass.swift"; sourceTree = "<group>"; };
+		624F94EC1F24519B006B180E /* Author+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +68,19 @@
 		624F94CD1F23BA7C006B180E /* GitHubCommits */ = {
 			isa = PBXGroup;
 			children = (
+				624F94EB1F24519B006B180E /* Author+CoreDataClass.swift */,
+				624F94EC1F24519B006B180E /* Author+CoreDataProperties.swift */,
+				624F94E51F243679006B180E /* Commit+CoreDataClass.swift */,
+				624F94E61F243679006B180E /* Commit+CoreDataProperties.swift */,
 				624F94CE1F23BA7C006B180E /* AppDelegate.swift */,
 				624F94D01F23BA7C006B180E /* ViewController.swift */,
+				624F94E01F23BB4A006B180E /* DetailViewController.swift */,
 				624F94D21F23BA7C006B180E /* Main.storyboard */,
 				624F94D51F23BA7C006B180E /* Assets.xcassets */,
 				624F94D71F23BA7C006B180E /* LaunchScreen.storyboard */,
 				624F94DA1F23BA7C006B180E /* Info.plist */,
-				624F94E01F23BB4A006B180E /* DetailViewController.swift */,
+				624F94E91F243815006B180E /* SwiftyJSON.swift */,
+				624F94E21F243060006B180E /* GitHubCommits.xcdatamodeld */,
 			);
 			path = GitHubCommits;
 			sourceTree = "<group>";
@@ -141,7 +159,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				624F94E11F23BB4A006B180E /* DetailViewController.swift in Sources */,
+				624F94E41F243061006B180E /* GitHubCommits.xcdatamodeld in Sources */,
+				624F94EE1F24519B006B180E /* Author+CoreDataProperties.swift in Sources */,
+				624F94E71F243679006B180E /* Commit+CoreDataClass.swift in Sources */,
 				624F94D11F23BA7C006B180E /* ViewController.swift in Sources */,
+				624F94ED1F24519B006B180E /* Author+CoreDataClass.swift in Sources */,
+				624F94E81F243679006B180E /* Commit+CoreDataProperties.swift in Sources */,
+				624F94EA1F243815006B180E /* SwiftyJSON.swift in Sources */,
 				624F94CF1F23BA7C006B180E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +334,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		624F94E21F243060006B180E /* GitHubCommits.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				624F94E31F243060006B180E /* GitHubCommits.xcdatamodel */,
+			);
+			currentVersion = 624F94E31F243060006B180E /* GitHubCommits.xcdatamodel */;
+			path = GitHubCommits.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 624F94C31F23BA7C006B180E /* Project object */;
 }
